@@ -14,7 +14,7 @@ This GitHub Action copies a folder from the current repository to a location in 
           uses: actions/checkout@v2
 
         - name: Pushes test folder
-          uses: crykn/copy_folder_to_another_repo_action@v1.0.4
+          uses: crykn/copy_folder_to_another_repo_action@v1.0.5
           env:
             API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
           with:
