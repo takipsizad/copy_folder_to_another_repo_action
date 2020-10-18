@@ -14,6 +14,11 @@ then
   INPUT_DESTINATION_BRANCH=master
 fi
 
+if [ -z "$INPUT_COMMIT_MSG" ]
+then
+  INPUT_COMMIT_MSG="Update $INPUT_DESTINATION_FOLDER."
+fi
+
 CLONE_DIR=$(mktemp -d)
 
 echo "Cloning destination git repository"
@@ -31,7 +36,7 @@ echo "Adding git commit"
 git add .
 if git status | grep -q "Changes to be committed"
 then
-  git commit --message "$UPDATE_MSG"
+  git commit --message "$INPUT_COMMIT_MSG"
   echo "Pushing git commit"
   git push origin $INPUT_DESTINATION_BRANCH
 else
