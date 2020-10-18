@@ -13,8 +13,8 @@ This GitHub Action copies a folder from the current repository to a location in 
         - name: Checkout
           uses: actions/checkout@v2
 
-        - name: Pushes test file
-          uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
+        - name: Pushes test folder
+          uses: crykn/copy_folder_to_another_repo_action@v1.0.4
           env:
             API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
           with:
