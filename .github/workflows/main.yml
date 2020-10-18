@@ -1,4 +1,4 @@
-name: Push File
+name: Push Folder
 
 on: push
 
@@ -9,26 +9,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Mark test file
-      run: |-
-        echo $GITHUB_SHA > test02.md
-
-    - name: Ignore unchanged file
-      uses: dmnemec/copy_file_to_another_repo_action@master
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source_file: 'test01.md'
-        destination_repo: 'dmnemec/release-test'
-        user_email: 'devin.nemec@gmail.com'
-        user_name: 'dmnemec'
-
     - name: Push changed file
-      uses: dmnemec/copy_file_to_another_repo_action@master
+      uses: crykn/copy_file_to_another_repo_action@master
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_file: 'test02.md'
+        source_folder: 'test_files'
         destination_repo: 'dmnemec/release-test'
         user_email: 'devin.nemec@gmail.com'
         user_name: 'dmnemec'
+        commit_msg: '[GHA] Update the test files.'
