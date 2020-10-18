@@ -28,7 +28,7 @@ git clone --single-branch --branch $INPUT_DESTINATION_BRANCH "https://$API_TOKEN
 
 echo "Copying contents to git repo"
 mkdir -p $CLONE_DIR/$INPUT_DESTINATION_FOLDER
-rmdir $INPUT_SOURCE_FOLDER
+rm -rf $CLONE_DIR/$INPUT_DESTINATION_FOLDER/
 cp -a $INPUT_SOURCE_FOLDER/. $CLONE_DIR/$INPUT_DESTINATION_FOLDER/
 cd "$CLONE_DIR"
 
