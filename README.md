@@ -1,5 +1,5 @@
-# copy_file_to_another_repo_action
-This GitHub Action copies a file from the current repository to a location in another repository
+# copy_folder_to_another_repo_action
+This GitHub Action copies a folder from the current repository to a location in another repository
 
 # Example Workflow
     name: Push File
@@ -18,19 +18,21 @@ This GitHub Action copies a file from the current repository to a location in an
           env:
             API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
           with:
-            source_file: 'test2.md'
+            source_folder: 'test_files'
             destination_repo: 'dmnemec/release-test'
             destination_folder: 'test-dir'
             user_email: 'devin.nemec@gmail.com'
             user_name: 'dmnemec'
+            commit_msg: '[GHA] Update the test files.'
 
 # Variables
-* source_file: The file or directory to be moved. Uses the same syntax as the `cp` command. Incude the path for any files not in the repositories root directory.
-* destination_repo: The repository to place the file or directory in.
+* source_folder: The folder to be moved.
+* destination_repo: The repository to place the folder in.
 * destination_folder: [optional] The folder in the destination repository to place the file in, if not the root directory.
 * user_email: The GitHub user email associated with the API token secret.
 * user_name: The GitHub username associated with the API token secret.
 * destination_branch: [optional] The branch of the source repo to update, if not master.
+* commit_msg: [optional] The commit message to use.
 
 # Behavior Notes
-The action will create any destination paths if they don't exist. It will also overwrite existing files if they already exist in the locations being copied to. It will not delete the entire destination repository.
+The action will remove the destionation folder before recreating it to place any copied files in it.
