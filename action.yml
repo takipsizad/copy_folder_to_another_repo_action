@@ -1,14 +1,14 @@
 name: 'Push a file to another repository'
 description: 'Used for pushing a copy of a file to another repository'
 inputs:
-  source_file:
-    description: 'Source file from the origin directory'
+  source_folder:
+    description: 'Source folder from the origin directory'
     required: true
   destination_repo:
     description: 'Destination repository'
     required: true
   destination_folder:
-    description: 'Directory to push the file to'
+    description: 'Directory to push the folder contents to'
     required: false
   user_email:
     description: 'Email for the git commit'
@@ -17,7 +17,10 @@ inputs:
     description: 'GitHub username for the commit'
     required: true
   destination_branch:
-    description: 'branch to push file to, defaults to master'
+    description: 'branch to push folder to, defaults to master'
+    required: false
+  commit_msg:
+    description: 'The commit message'
     required: false
 runs:
   using: 'docker'
@@ -28,6 +31,7 @@ runs:
     - ${{ inputs.destination-folder }}
     - ${{ inputs.user-email }}
     - ${{ inputs.destination-branch }}
+    - ${{ inputs.commit_msg }}
 branding:
   icon: 'git-commit'
   color: 'green'
