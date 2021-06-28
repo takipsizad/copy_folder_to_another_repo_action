@@ -1,4 +1,4 @@
-name: 'Push directory to another repository'
+name: 'Push a directory to another repository'
 description: 'Used for pushing a copy of a folder to another repository'
 inputs:
   source_folder:
