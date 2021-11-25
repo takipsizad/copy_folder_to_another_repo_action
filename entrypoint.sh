@@ -6,7 +6,7 @@ set -x
 if [ -z "$INPUT_SOURCE_FOLDER" ]
 then
   echo "Source folder must be defined"
-  return -1
+  return 1
 fi
 
 if [ -z "$INPUT_DESTINATION_BRANCH" ]
