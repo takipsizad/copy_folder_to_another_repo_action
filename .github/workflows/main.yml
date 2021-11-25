@@ -1,21 +1,31 @@
-name: Push Folder
+name: Check
 
-on: push
+on:
+  workflow_dispatch:
 
 jobs:
-  copy-file:
+  shellcheck:
+    name: Shellcheck
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+    - name: Run ShellCheck
+      uses: ludeeus/action-shellcheck@master
 
-    - name: Push changed file
-      uses: crykn/copy_file_to_another_repo_action@master
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source_folder: 'test_files'
-        destination_repo: 'dmnemec/release-test'
-        user_email: 'devin.nemec@gmail.com'
-        user_name: 'dmnemec'
-        commit_msg: '[GHA] Update the test files.'
+#   copy-file:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
+# 
+#     - name: Push changed file
+#       uses: crykn/copy_file_to_another_repo_action@master
+#       env:
+#         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+#       with:
+#         source_folder: 'test_files'
+#         destination_repo: 'dmnemec/release-test'
+#         user_email: 'devin.nemec@gmail.com'
+#         user_name: 'dmnemec'
+#         commit_msg: '[GHA] Update the test files.'
+
