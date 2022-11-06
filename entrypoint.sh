@@ -39,7 +39,7 @@ rm -rf "$CLONE_DIR/$INPUT_DESTINATION_FOLDER/"
 mkdir -p "$CLONE_DIR/$INPUT_DESTINATION_FOLDER/"
 cp -a "$INPUT_SOURCE_FOLDER" "$CLONE_DIR/$INPUT_DESTINATION_FOLDER/"
 cd "$CLONE_DIR"
-
+git config --global credential.helper wincred
 echo "Adding git commit"
 git add .
 if git status | grep -q "Changes to be committed"
